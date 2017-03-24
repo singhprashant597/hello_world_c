@@ -7,10 +7,10 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" href="#">WebSiteName</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
@@ -47,10 +47,9 @@
                         </div>
                         <div class="checkbox">
                             <label>
-                          <input type="checkbox" name="" value="">
-                            Remember me
-                          </input>
-                        </label>
+                                <input type="checkbox" name="" value=""> Remember me
+                                </input>
+                            </label>
                         </div>
                         <div class="button-div">
                             <button type="submit" class "btn btn-default login-button" name="button">Login</button>
@@ -79,7 +78,6 @@
             </div>
         </div>
     </div>
-
 </section>
 <section class="signup-modal">
     <div id="signupModal" class="modal fade" role="dialog">
@@ -90,19 +88,19 @@
                     <h4 class="modal-title">Signup</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" action="" method="post">
+                    <form class="form-horizontal" id="form_signup">
                         <div class="form-group">
                             <label class="control-label" for="name">Full Name:</label>
-                            <input type="name" class="form-control" id="name" name="name" placeholder="Vivek Oberoi">
+                            <input type="name" class="form-control" id="signup_name">
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="gender"> Gender:</label>
                             <label>
-                            <input type="radio" name="gender" value="Male" checked> Male</input>
-                          </label>
+                                <input type="radio" name="gender" value="Male" checked> Male</input>
+                            </label>
                             <label>
-                            <input type="radio" name="gender" value="Female"> Female</input>
-                          </label>
+                                <input type="radio" name="gender" value="Female"> Female</input>
+                            </label>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="email">Email address:</label>
@@ -199,9 +197,7 @@
                   </h4>
                     <p>Documentation and examples for every part of Projects.</p>
                 </div>
-
             </div>
-
         </div>
     </div>
 </section>
@@ -216,7 +212,6 @@
                     <li data-target="#Carousel" data-slide-to="1"></li>
                     <li data-target="#Carousel" data-slide-to="2"></li>
                 </ol>
-
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
@@ -229,7 +224,6 @@
                         <h4>"Could I... BE any more happy with this company?"<br><span style="font-style:normal;">Chandler Bing, Actor, FriendsAlot</span></h4>
                     </div>
                 </div>
-
                 <!-- Left and right controls -->
                 <a class="left carousel-control" href="#Carousel" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -240,11 +234,8 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-
         </div>
-
     </div>
-
 </section>
 <section class="join">
     <div class="text-center">
@@ -280,4 +271,15 @@
         <p>Projects Made By Phoenix</p>
     </footer>
 </section>
+<script type="text/javascript">
+$(document).on('submit', '#form_signup', function() {
+    var inputs = $('#form_signup :input');
+    var values = {};
+    inputs.each(function() {
+        values[this.name] = $(this).val();
+    });
+    console.log(values);
+    return false;
+});
+</script>
 {% endblock body_content %}
