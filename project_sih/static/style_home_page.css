@@ -347,3 +347,487 @@ html {
     color: #fc5b3a;
     text-decoration: none;
 }
+
+
+
+
+/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+/*-------------------------USER POST LOGIN BASE-------------------------------*/
+/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+
+
+/*------------ Sidebar Affix ---------------- */
+
+.affix {
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    z-index: 9999;
+}
+
+.affix-top {
+    position: fixed;
+    height: 100%;
+    z-index: 9999;
+}
+
+.affix-bottom {
+    position: absolute;
+}
+
+
+/*------------ Sidebar Scrollbar ---------------- */
+
+.sidebar {
+    overflow-y: hidden;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #2b303b;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 0px;
+    background-color: #F5F5F5;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+    background-color: #f02541;
+}
+
+
+/*Wrapper*/
+
+#wrapper {
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    padding-left: 0;
+    overflow: scroll;
+    transition: all 0.5s ease;
+}
+
+
+/* Sidebar */
+
+#sidebar-wrapper {
+    z-index: 100;
+    position: absolute;
+    width: 70px;
+    height: 100%;
+    //    background: #2b303b;
+    background: #2a3f54;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    opacity: 0.95;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+
+/* Always take up entire screen */
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 70px;
+    transition: 0.5s ease;
+}
+
+
+/* Change with of sidebar from 0 to 250px */
+
+#wrapper.menuDisplayed #sidebar-wrapper {
+    width: 250px;
+}
+
+
+/* Since we added left padding, we need to shrink the width by 250px */
+
+#wrapper.menuDisplayed #page-content-wrapper {
+    padding-left: 250px;
+    transition: all 0.5s ease;
+}
+
+
+/* Sidebar styling - the entire ul list */
+
+.sidebar .navbar-header .navbar-brand {
+    font-size: 20px;
+    height: 65px;
+    line-height: 44px;
+    color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 250px;
+}
+
+.sidebar .navbar-header .navbar-brand:hover {
+  color: transparent;
+}
+
+#wrapper.menuDisplayed .sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #ddd;
+}
+
+#wrapper.menuDisplayed .sidebar-nav li a:hover {
+    color: #fff;
+    background: #f02541;
+    transition: 0.5s;
+}
+
+#wrapper.menuDisplayed .sidebar>.navbar-header>.navbar-brand {
+    font-size: 20px;
+    height: 65px;
+    line-height: 44px;
+    background: transparent;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    //    transition: 0.5s ease;
+}
+
+#wrapper.menuDisplayed .sidebar>.navbar-header>.navbar-brand:hover {
+    background: transparent;
+}
+
+.hamburger {
+    margin-left: 70px;
+    background: transparent;
+    border: 0px;
+    transition: .5s ease;
+}
+
+.hamburger:focus {
+    outline: none;
+}
+
+.hamburger:visited {
+    background: transparent;
+    border: 0px;
+}
+
+.icon-bar {
+    display: block;
+    width: 22px;
+    margin: 6px;
+    height: 2px;
+    background: #fff;
+    //    transition: all 0.2s;
+}
+
+
+/*
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.4);
+    z-index: 1;
+} */
+
+.navbar.profile-nav {
+    z-index: 10;
+    background-color: #f02541;
+    border-color: #f02541;
+    height: 65px;
+}
+
+.profile-nav .hamburger {
+    height: 65px;
+}
+
+#wrapper.menuDisplayed .profile-nav .hamburger {
+    margin-left: 250px;
+    //    transition: 0.5s ease;
+}
+
+
+/*-------------------------------- Navbar Heads -----------------------------*/
+
+
+/*------- Dropdown -------*/
+
+.navbar-default .navbar-nav>.open>a:focus {
+    color: #f02541 !important;
+    background-color: #f7f7f7 !important;
+}
+
+.dropdown-menu li a {
+    color: #555 !important;
+    padding: 8px 20px !important;
+}
+
+.dropdown-menu .dropdown-header {
+    padding: 5px;
+    font-size: 1.2rem;
+}
+
+
+/*------ Profile Image -------*/
+
+.profile-img {
+    width: 42px;
+    margin-top: -5px;
+    //  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/*------ Navbar Tabs --------*/
+
+.navbar-default .navbar-nav .dropdown a {
+    color: #fff;
+    margin-right: 10px;
+}
+
+.navbar-default .navbar-nav .dropdown a:visited {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav .navbar-tab a {
+    color: #fff;
+    height: 65px;
+    font-weight: bold;
+    padding: 2rem;
+    text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav .navbar-tab a:visited {
+    color: #fff;
+    background: #f7f7f7;
+}
+
+.navbar-default .navbar-nav .navbar-tab a:hover {
+    color: #f02541;
+    background: #f7f7f7;
+}
+
+
+/*--------- Search Bar --------*/
+
+.search-bar {
+    padding-top: 5px;
+}
+
+.search-btn {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #fff !important;
+}
+
+
+/*---------Sidebar menu profile quick info --------*/
+
+.profile {
+    display: none;
+}
+
+.profile-image {
+    width: 35%;
+    float: left;
+}
+
+.img-circle.profile-image {
+    width: 70%;
+    background: #fff;
+    margin-left: 15%;
+    z-index: 1000;
+    position: inherit;
+    margin-top: 20px;
+    border: 0px solid rgba(52, 73, 94, .44);
+    padding: 4px;
+}
+
+.profile-info {
+    padding: 25px 10px 10px;
+    width: 65%;
+    float: left;
+}
+
+.profile-info span {
+    font-size: 13px;
+    line-height: 30px;
+    color: #BAB8B8;
+}
+
+.profile-info h2 {
+    font-size: 14px;
+    color: #ECF0F1;
+    margin: 0;
+    font-weight: 300;
+}
+
+
+/*-------------Sidebar menu---------------*/
+
+.main-menu-side {
+    padding: 0;
+    text-align: center;
+}
+
+.menu-section {
+    margin-bottom: 35px;
+}
+
+.menu-section h3 {
+    padding-left: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-weight: 700;
+    font-size: 11px;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-shadow: 1px 1px #000;
+    display: none;
+}
+
+.menu-section>ul {
+    margin-top: 10px;
+}
+
+.collapse.in {
+    border-right: 5px solid #1abb9c;
+//    transition: 0.5s ease;
+}
+
+.nav.side-menu>li {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+.nav.child-menu>li>a, .nav.side-menu>li>a {
+    color: #e7e7e7;
+    font-weight: 500;
+}
+
+
+.nav.side-menu>li>a {
+    margin-bottom: 6px;
+}
+
+.nav.child-menu>li>a:hover, .nav.side-menu>li>a:hover {
+  background-color: #374a5e;
+}
+
+.nav.child-menu>li>a:visited, .nav.side-menu>li>a:visited {
+  background-color: ##2a3f54;
+}
+
+ .nav.side-menu>li>a:focus {
+  background-color: #374a5e;
+}
+
+
+.main-menu .fa {
+    width: 26px;
+    opacity: 0.99;
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.main-menu span.fa {
+    float: right;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 10px !important;
+    min-width: inherit;
+    color: #c4cfda;
+}
+
+.nav.child-menu {
+    display: none;
+}
+
+.nav.child-menu li {
+    padding-left: 36px;
+}
+
+.nav.child-menu li:before {
+    background: #425668;
+    bottom: auto;
+    content: "";
+    height: 8px;
+    left: 23px;
+    margin-top: 15px;
+    position: absolute;
+    right: auto;
+    width: 8px;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.child-menu li:after {
+    border-left: 1px solid #425668;
+    bottom: 0;
+    content: "";
+    left: 27px;
+    position: absolute;
+    top: 0;
+}
+
+.nav.child-menu>li>a {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 12px;
+    padding: 9px;
+}
+
+/*------------- Sidebar Foooter ------------- */
+
+.menu-footer {
+    display: none;
+}
+
+.sidebar-footer {
+    bottom: 0;
+    clear: both;
+    display: block;
+    padding: 5px 0 0;
+    position: absolute;
+    width: 250px;
+    background: #2A3F54;
+    z-index: -1;
+}
+
+.sidebar-footer a {
+    padding: 7px 0 3px;
+    text-align: center;
+    width: 25%;
+    font-size: 17px;
+    display: block;
+    float: left;
+    background: #172D44;
+    cursor: pointer;
+}
+
+
+/*------------ Responsive SIdebar -----------*/
+
+@media only screen and (max-device-width: 425px) {
+  #sidebar-wrapper {
+    width:0;
+  }
+  .hamburger {
+    margin-left:0;
+  }
+}
