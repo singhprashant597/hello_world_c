@@ -1,0 +1,145 @@
+{% load staticfiles %}
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0; user-scalable=no" />
+    <title>User profile</title>
+    <link rel="stylesheet" href="../../static/style_home_page.css">
+    <script src="{% static 'tether.min.js' %}"></script>
+    <script src="{% static 'jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'sidebar.js' %}"></script>
+</head>
+
+<body class=""> -->
+    
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div data-spy="affix">
+        <nav class="navbar navbar-inverse bg-inverse bg-inverse fixed-top sidebar scrollbar navbar-toggleable-sm"
+        id="sidebar-wrapper"> <a class="navbar-brand" href="#">
+
+                    <span>Projects</span>
+
+                </a>
+            <div class="clearfix"></div>
+            <!-- menu profile quick info -->
+            <div class="profile clearfix" id="profile">
+                <div class="profile-image">
+                    <img src="../../static/images/img.jpg" class="profile-image rounded-circle"
+                    alt="profile image" />
+                </div>
+                <div class="profile-info"> <span>Welcome,</span>
+                     <h2>{{user.first_name}}</h2>
+                </div>
+            </div>
+            <!-- /menu profile quick info -->
+            <br />
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main-menu-side main-menu">
+                <div class="menu-section">
+                     <h3>General</h3>
+                    <ul class="nav side-menu">
+                        <li class="nav-item"> <a href="#" class="nav-link">
+
+                                    <i class="fa fa-home"></i> Home
+
+                                </a>
+                        </li>
+                        <li class="nav-item"> <a href="#" class="nav-link">
+
+                                    <i class="fa fa-edit"></i> Edit
+
+                                </a>
+                        </li>
+                        <li class="nav-item"> <a href="#demo" data-toggle="collapse" class="nav-link">
+
+                                    <i class="fa fa-desktop"></i> Events
+
+                                    <span id="chevron-down"></span>
+
+                                </a>
+                            <ul class="nav child-menu collapse"
+                            id="demo">
+                                <li class="nav-item"> <a href="#" class="nav-link">Society Upliftment Event</a>
+                                </li>
+                                <li class="nav-item"> <a href="#" class="nav-link">Innovative Event</a>
+                                </li>
+                                <li class="nav-item"> <a href="#" class="nav-link">Brainstorming Event</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"> <a href="#" class="nav-link">
+
+                                    <i class="fa fa-sign-out"></i> Logout
+
+                                </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- menu footer buttons -->
+                <div class="menu-footer"> <a href="#">
+
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+
+                        </a>
+ <a href="#">
+
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+
+                        </a>
+ <a href="#">
+
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+
+                        </a>
+ <a href="#">
+
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+
+                        </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-light bg-faded fixed-top profile-nav  navbar-toggleable-sm">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas"
+            name="button" id="menu_toggle">☰</button>
+            <ul class="nav navbar-nav ml-auto hidden-xs-down-down">
+                <li class="navbar-tab nav-item"> <a href="#" class="fa fa-bell nav-link"></a>
+                </li>
+                <li class="dropdown nav-item"> <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+
+                            <img src="../../static/images/img.jpg" class="profile-img rounded-circle" alt="profile image" /> &nbsp;{{user.first_name}}
+
+                            <span class="fa fa-angle-down"></span>
+
+                        </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header dropdown-item">User</li>
+                        <li class="dropdown-item"><a href="#">Home</a>
+                        </li>
+                        <li class="dropdown-item"><a href="#">Projects</a>
+                        </li>
+                        <li class="divider dropdown-item"></li>
+                        <li class="dropdown-header dropdown-item">Social</li>
+                        <li class="dropdown-item"><a href="#">Share</a>
+                        </li>
+                        <li class="divider dropdown-item"></li>
+                        <li class="dropdown-item"><a href="#">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item"></li>
+            </ul>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12"></div>
+            </div>
+        </div>
+    </div>
+</div>

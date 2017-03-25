@@ -438,7 +438,6 @@ html {
 #page-content-wrapper {
     width: 100%;
     position: absolute;
-    padding: 70px;
     transition: 0.5s ease;
 }
 

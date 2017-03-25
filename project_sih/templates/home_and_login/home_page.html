@@ -1,117 +1,128 @@
-{% extends "sitewide/sitewide_base.html" %} {% load staticfiles %} {% block custom_meta %}
-<meta property="og:description" content="Project Sharing App"> {% endblock custom_meta %} {% block extra_headers %}
+{% load staticfiles %} {% block extra_headers %}
 <title>Project</title>
 {% endblock extra_headers %} {% block body_content %}
 <section class="navigation-bar">
-    <nav class="navbar navbar-default">
+    <!-- <nav class="navbar navbar-light bg-faded navbar-toggleable-sm">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">WebSiteName</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <!--    <li><input type="text" name="" value="" placeholder="Search"></li>  -->
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">ABOUT US</a></li>
-                    <li><a href="#">CONTACT US</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#loginModal">LOGIN</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#signupModal">SIGNUP</a></li>
-                </ul>
-            </div>
-            </form>
+            <button type="button" class="navbar-toggler float-right hidden-md-up"
+            data-toggle="collapse" data-target="#myNavbar">☰</button> <a class="navbar-brand" href="#">WebSiteName</a>
+            <ul class="nav navbar-nav ml-auto">
+          
+                <li class="nav-item"><a href="#" class="nav-link">HOME</a>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">ABOUT US</a>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">CONTACT US</a>
+                </li>
+                <li class="nav-item"><a href="#" data-toggle="modal" data-target="#loginModal" class="nav-link">LOGIN</a>
+                </li>
+                <li class="nav-item"><a href="#" data-toggle="modal" data-target="#signupModal" class="nav-link">SIGNUP</a>
+                </li>
+            </ul>
+        </div>
+    </nav> -->
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Website Name</a>
+        <div id="navbarNavDropdown" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="#" data-toggle="modal" data-target="#loginModal" class="nav-link">LOGIN</a>
+                </li>
+                <li class="nav-item"><a href="#" data-toggle="modal" data-target="#signupModal" class="nav-link">SIGNUP</a>
+                </li>
+            </ul>
         </div>
     </nav>
 </section>
-<section class="login-modal">
-    <div id="loginModal" class="modal fade" role="dialog">
-        <div class="modal-dialog ">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" name="button">&times;</button>
-                    <h4 class="modal-title">Login</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" action="" method="post">
-                        <div class="form-group">
-                            <label class="control-label" for="email">Email address:</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="hello@gmail.com">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="pwd">Password:</label>
-                            <input type="password" class="form-control" name="password" placeholder="Password">
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="" value=""> Remember me
-                                </input>
-                            </label>
-                        </div>
-                        <div class="button-div">
-                            <button type="submit" class "btn btn-default login-button" name="button">Login</button>
-                        </div>
-                    </form>
-                    <div class="social-login">
-                        <a class="btn btn-social-icon btn-github" href="#">
-                            <span class="fa fa-github"></span>
-                        </a>
-                        <a class="btn btn-social-icon btn-facebook" href="#">
-                            <span class="fa fa-facebook"></span>
-                        </a>
-                        <a class="btn btn-social-icon btn-twitter" href="#">
-                            <span class="fa fa-twitter"></span>
-                        </a>
-                        <a class="btn btn-social-icon btn-linkedin" href="#">
-                            <span class="fa fa-linkedin"></span>
-                        </a>
+<div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="" id="form_login">
+                    <div class="form-group">
+                        <label class="form-control-label" for="email">Email address:</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="hello@gmail.com" />
                     </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="pwd">Password:</label>
+                        <input type="password" class="form-control" name="password" placeholder="Password" />
+                    </div>
+                    <div class="form-check">
+                        <label>
+                            <input type="checkbox" name="remember" value="" />Remember me</label>
+                    </div>
+                    <div class="button-div">
+                        <button type="submit" class="btn btn-secondary login-button" name="button">Login</button>
+                    </div>
+                </form>
+                <div class="social-login">
+                    <a class="btn btn-social-icon btn-github" href="#">
+                        <span class="fa fa-github"></span>
+                    </a>
+                    <a class="btn btn-social-icon btn-facebook" href="#">
+                        <span class="fa fa-facebook"></span>
+                    </a>
+                    <a class="btn btn-social-icon btn-twitter" href="#">
+                        <span class="fa fa-twitter"></span>
+                    </a>
+                    <a class="btn btn-social-icon btn-linkedin" href="#">
+                        <span class="fa fa-linkedin"></span>
+                    </a>
                 </div>
-                <div class="modal-footer">
-                    <p>
-                        Login Portal
-                    </p>
-                </div>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
     </div>
-</section>
+</div>
 <section class="signup-modal">
     <div id="signupModal" class="modal fade" role="dialog">
         <div class="modal-dialog ">
+            <div class="modal-content"></div>
+        </div>
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" name="button">&times;</button>
-                    <h4 class="modal-title">Signup</h4>
+                    <h5 class="modal-title">Signup</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" id="form_signup">
+                    <form class="" id="form_signup">
                         <div class="form-group">
-                            <label class="control-label" for="name">Full Name:</label>
-                            <input type="name" class="form-control" id="signup_name">
+                            <label class="form-control-label" for="name">Full Name:</label>
+                            <input type="text" name="name" class="form-control" id="signup_name" />
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="gender"> Gender:</label>
-                            <label>
-                                <input type="radio" name="gender" value="Male" checked> Male</input>
-                            </label>
-                            <label>
-                                <input type="radio" name="gender" value="Female"> Female</input>
-                            </label>
+                            <label class="form-control-label" for="email">Email address:</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="hello@gmail.com" />
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="email">Email address:</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="hello@gmail.com">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="pwd">Password:</label>
-                            <input type="password" class="form-control" name="password" placeholder="Password">
+                            <label class="form-control-label" for="pwd">Password:</label>
+                            <input type="password" class="form-control" name="password" placeholder="Password" />
                         </div>
                         <div class="button-div">
-                            <button type="submit" class "btn btn-default login-button" name="button">Signup</button>
+                            <button type="submit" class="btn btn-secondary login-button" name="button">Signup</button>
                         </div>
                     </form>
                     <div class="social-login">
@@ -130,9 +141,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <p>
-                        Signup Portal
-                    </p>
+                    <p>Signup Portal</p>
                 </div>
             </div>
         </div>
@@ -141,13 +150,11 @@
 <section class="heading">
     <div class="text-center">
         <div class="row">
-            <div class="container col-sm-12 content-centered">
+            <div class="container col-md-12 content-centered">
                 <h1>Projects</h1>
-                <p class="tagline">
-                    A JavaScript toolkit that saves you time and scales with your development process. Provides everything you need to build a Web app. Language utilities, UI components, and more, all in one place, designed to work together perfectly.
-                </p>
+                <p class="tagline">A JavaScript toolkit that saves you time and scales with your development process. Provides everything you need to build a Web app. Language utilities, UI components, and more, all in one place, designed to work together perfectly.</p>
                 <a href="#">
-                    <button type="button" class="btn btn-default heading-button">JOIN</button>
+                    <button type="button" class="btn btn-secondary heading-button">JOIN</button>
                 </a>
             </div>
         </div>
@@ -156,51 +163,44 @@
 <section class="news">
     <div class="text-center">
         <div class="row">
-            <div class="container col-sm-12 content-centered">
+            <div class="container col-md-12 content-centered">
                 <h2 class="section-title">Latest News</h2>
                 <p>Work Has Began on Projects ! Learn about the vision and how to get involved</p>
             </div>
         </div>
     </div>
 </section>
-<section class="use">
-    <div class="text-center">
-        <div class="row">
-            <div class="container">
-                <div class="use-title container-fluid">
-                    <h2>Use Projects</h2>
-                </div>
-                <div class="icon-block col-md-4 col-sm-12" data-href="#">
-                    <a href="#">
-                        <i class="material-icons icon">&#xe14d;</i>
-                    </a>
-                    <h4 class="use-heading">
+<div class="container">
+    <div class="row">
+        <div class="icon-block col-sm">
+            <a href="#">
+                <i class="material-icons icon"></i>
+            </a>
+            <h4 class="use-heading">
+
                       <a href="#" class="use-heading-link">Reference Guide</a>
-                    </h4>
-                    <p>Documentation and examples for every part of Projects.</p>
-                </div>
-                <div class="icon-block col-md-4 col-sm-12">
-                    <a href="#">
-                        <i class="material-icons icon">&#xe14d;</i>
-                    </a>
-                    <h4 class="use-heading">
-                    <a href="#" class="use-heading-link">Tutorials</a>
-                  </h4>
-                    <p>Documentation and examples for every part of Projects.</p>
-                </div>
-                <div class="icon-block col-md-4 col-sm-12">
-                    <a href="#">
-                        <i class="material-icons icon">&#xe14d;</i>
-                    </a>
-                    <h4 class="use-heading">
-                    <a href="#" class="use-heading-link">Browsing</a>
-                  </h4>
-                    <p>Documentation and examples for every part of Projects.</p>
-                </div>
-            </div>
-        </div>
+
+                    </h4></div>
+        <div class="icon-block col-sm">
+            <a href="#">
+                <i class="material-icons icon"></i>
+            </a>
+            <h4 class="use-heading">
+
+                      <a href="#" class="use-heading-link">Reference Guide</a>
+
+                    </h4></div>
+        <div class="icon-block col-sm">
+            <a href="#">
+                <i class="material-icons icon"></i>
+            </a>
+            <h4 class="use-heading">
+
+                      <a href="#" class="use-heading-link">Reference Guide</a>
+
+                    </h4></div>
     </div>
-</section>
+</div>
 <section class="site-carousel">
     <div class="row">
         <div class="container">
@@ -214,14 +214,14 @@
                 </ol>
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <h4>"This company is the best. I am so happy with the result!"<br><span style="font-style:normal;">Michael Roe, Vice President, Comment Box</span></h4>
+                    <div class="item active carousel-item">
+                        <h4>"This company is the best. I am so happy with the result!"<br /><span style="font-style: normal;">Michael Roe, Vice President, Comment Box</span></h4>
                     </div>
-                    <div class="item">
-                        <h4>"One word... WOW!!"<br><span style="font-style:normal;">John Doe, Salesman, Rep Inc</span></h4>
+                    <div class="item carousel-item">
+                        <h4>"One word... WOW!!"<br /><span style="font-style: normal;">John Doe, Salesman, Rep Inc</span></h4>
                     </div>
-                    <div class="item">
-                        <h4>"Could I... BE any more happy with this company?"<br><span style="font-style:normal;">Chandler Bing, Actor, FriendsAlot</span></h4>
+                    <div class="item carousel-item">
+                        <h4>"Could I... BE any more happy with this company?"<br /><span style="font-style: normal;">Chandler Bing, Actor, FriendsAlot</span></h4>
                     </div>
                 </div>
                 <!-- Left and right controls -->
@@ -240,9 +240,9 @@
 <section class="join">
     <div class="text-center">
         <div class="row">
-            <div class="container col-sm-12 col-md-12 content-centered">
+            <div class="container col-md-12 col-lg-12 content-centered">
                 <a href="#">
-                    <button type="button" class="btn btn-default join-button">Become a Contributor</button>
+                    <button type="button" class="btn btn-secondary join-button">Become a Contributor</button>
                 </a>
             </div>
             <div class="social-login">
@@ -261,7 +261,6 @@
             </div>
         </div>
     </div>
-    </div>
 </section>
 <section class="footer">
     <footer class="container-fluid text-center">
@@ -272,14 +271,8 @@
     </footer>
 </section>
 <script type="text/javascript">
-$(document).on('submit', '#form_signup', function() {
-    var inputs = $('#form_signup :input');
-    var values = {};
-    inputs.each(function() {
-        values[this.name] = $(this).val();
-    });
-    console.log(values);
-    return false;
-});
+token = '{{ csrf_token }}';
+</script>
+<script src="{% static 'assets/javascripts/home.js' %}"></script>
 </script>
 {% endblock body_content %}
