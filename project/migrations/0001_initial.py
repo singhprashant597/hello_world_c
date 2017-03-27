@@ -17,17 +17,18 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='user_details',
+            name='project',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('full_name', models.CharField(max_length=50)),
-                ('profile_link', models.URLField(default='/welcome_user')),
-                ('dob', models.DateField(null=True)),
-                ('intro', models.CharField(max_length=200, null=True)),
-                ('photo_link', models.URLField(default='/static/sitewide/anonymous-male.png')),
-                ('followers_total', models.IntegerField(default=0)),
+                ('title', models.CharField(max_length=120)),
+                ('project_type', models.CharField(choices=[('Med', 'Medical'), ('Lit', 'Literature')], default='NO', max_length=200)),
+                ('project_link', models.URLField(default='error.html')),
+                ('likes_total', models.IntegerField(default=0)),
+                ('comments_total', models.IntegerField(default=0)),
+                ('shares_total', models.IntegerField(default=0)),
                 ('following_total', models.IntegerField(default=0)),
-                ('projects_total', models.IntegerField(default=0)),
+                ('date_time', models.DateTimeField(auto_now_add=True, null=True)),
+                ('description', models.TextField()),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),

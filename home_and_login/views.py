@@ -30,6 +30,10 @@ def login_user(request):
             return HttpResponse("Sorry, check initials")
 
 
+def logout_user(request):
+    logout(request)
+    return home_page(request)
+
 def add_new_user(request):
     print('hello')
     if request.method == 'POST':
