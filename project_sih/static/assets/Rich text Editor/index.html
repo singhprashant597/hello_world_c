@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="editor.js"></script>
+    <link rel="stylesheet" href="master.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="controls">
+                <button id="bold" type="button" class="btn toolbar_btn">
+              <i class="fa fa-bold"></i>
+            </button>
+                <button id="italic" type="button" class="btn toolbar_btn">
+              <i class="fa fa-italic"></i>
+            </button>
+                <button id="underline" type="button" class="btn toolbar_btn">
+              <i class="fa fa-underline"></i>
+            </button>
+                <button id="strikethrough" type="button" class="btn toolbar_btn">
+              <i class="fa fa-strikethrough"></i>
+            </button>
+                <div class="toolbar_separator"></div>
+                <button id="left_align" type="button" class="btn toolbar_btn">
+                  <i class="fa fa-align-left"></i>
+                </button>
+                <button id="center_align" type="button" class="btn toolbar_btn">
+                  <i class="fa fa-align-center"></i>
+                </button>
+                <button id="right_align" type="button" class="btn toolbar_btn">
+                  <i class="fa fa-align-right"></i>
+                </button>
+                <button id="orderedlist" type="button" class="btn toolbar_btn">
+                  <i class="fa fa-list-ol"></i>
+                </button>
+                <button id="unorderedlist" type="button" class="btn toolbar_btn">
+                  <i class="fa fa-list-ul"></i>
+                </button>
+                <button id="outdentText" type="button" class="btn toolbar_btn">
+                  <i class="fa fa-outdent"></i>
+                </button>
+                <button id="indentText" type="button" class="btn toolbar_btn">
+                  <i class="fa fa-indent"></i>
+                </button>
+                <div class="toolbar_separator"></div>
+                <select id="fonts" class="form-control">
+                 <option selected>
+                    Font
+                 </option>
+                 <option value="Normal">Normal</option>
+                 <option value="Arial">Arial</option>
+                 <option value="Comic Sans MS">Comic Sans MS</option>
+                 <option value="Courier New">Courier New</option>
+                 <option value="Monotype Corsiva">Monotype</option>
+                 <option value="Tahoma New">Tahoma</option>
+                 <option value="Times">Times</option>
+                 <option value="Trebuchet New">Trebuchet</option>
+                 <option value="Ubuntu">Ubuntu</option>
+               </select>
+              <select id="fontSize" class="form-control">
+                <option selected>Font Size</option>
+                <option value="1">12</option>
+                <option value="2">18</option>
+                <option value="3">24</option>
+                <option value="4">30</option>
+                <option value="5">36</option>
+                <option value="6">48</option>
+                <option value="7">60</option>
+              </select>
+            </div>
+            <iframe id="textEditor"></iframe>
+        </div>
+    </div>
+</body>
+
+</html>
