@@ -438,7 +438,6 @@ html {
 #page-content-wrapper {
     width: 100%;
     position: absolute;
-    padding: 70px;
     transition: 0.5s ease;
 }
 
@@ -830,4 +829,98 @@ html {
   .hamburger {
     margin-left:0;
   }
+}
+
+
+
+/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+/*-------------------------RICH TEXT EDITOR CSS-------------------------------*/
+/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+
+
+
+#controls {
+    color: #222222;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 1px 1px rgba(0, 0, 0, 0.16);
+    border-top: 6px solid #333;
+    width: 930px;
+}
+
+.toolbar_btn {
+    background: transparent;
+    color: #222222;
+    -moz-outline: 0;
+    outline: 0;
+    border: 0;
+    line-height: 1;
+    cursor: pointer;
+    text-align: left;
+    margin: 0px 2px;
+    -webkit-transition: background 0.2s ease 0s;
+    -moz-transition: background 0.2s ease 0s;
+    -ms-transition: background 0.2s ease 0s;
+    -o-transition: background 0.2s ease 0s;
+    width: 38px;
+    height: 38px;
+}
+
+#fonts.form-control {
+    margin-left: 7rem;
+    width: 100px !important;
+    display: inline-block;
+}
+
+option {
+    display: block;
+    background-color: transparent;
+    color: #222222;
+    -moz-outline: 0;
+    outline: 0;
+    border: 0;
+    line-height: 1;
+    cursor: pointer;
+    text-align: left;
+    margin: 0px 2px;
+}
+
+.selected {
+    background: transparent;
+    color: #222222;
+    -moz-outline: 0;
+    outline: 0;
+    border: 0;
+    line-height: 1;
+    cursor: pointer;
+    text-align: left;
+    margin: 0px 2px;
+    width: 38px;
+    height: 38px;
+}
+
+#fontSize.form-control {
+    margin-left: 1rem;
+    width: 140px !important;
+    display: inline-block;
+}
+
+.toolbar_separator {
+    height: 34px;
+    width: 1px;
+    margin: 2px;
+    background: #ebebeb;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#textEditor {
+    display: block;
+    width: 930px;
+    height: 380px;
+    border: 2px solid #f3f3f3;
+    border-radius: 0px;
+    overflow: auto;
+    margin: 0;
 }

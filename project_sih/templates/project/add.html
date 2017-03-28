@@ -1,0 +1,87 @@
+{% extends "sitewide/sitewide_base.html" %} {% load staticfiles %} {% block extra_headers %}
+<link href="https://fonts.googleapis.com/css?family=Barrio|Open+Sans|Josefin+Sans" rel="stylesheet"> {% endblock extra_headers %} {% block body_content %}
+<style type="text/css">
+input:focus {
+    outline: 0;
+}
+</style>
+<div id="add_project_full" style="background-color: #eee;height: 100vh; width: 100vw;">
+</div>
+<!-- <div id="block_add_project_type" style="position: relative; font-size:3vw;text-align: center;top:30%;transform: translateY(-50%);">
+    <p style="font-size: 2vw;">What type of project is it?</p>
+    <div style="width:200px;height:200px;background-color:#73bec8;text-align:center;"><i style="color:#fff; font-size:12vw" class="fa fa-stethoscope" aria-hidden="true"></i>
+        <br><p>Medical</p>
+    </div>
+    <i class="fa fa-arrow-right" aria-hidden="true" id="add_project_next_2"></i></div> -->
+<script type="text/javascript">
+var token = '{{csrf_token}}';
+var index_to_add_project_block = {
+    1: 'block_title',
+    2: 'block_type',
+    3: 'block_desc',
+    4: 'block_tags'
+};
+
+function show_add_project_block() {
+    //blocks defined
+    var block_title = '<div id="block_add_project_title" style="position: relative; font-size:3vw;text-align: center;top:21%;">        <p>Hi! {{user.first_name}}            <p style="font-size: 2vw;">Give a title to your project.</p>            <input type="text" id="project_title" placeholder="title" style="font-size: 2vw; text-align: center; background-color: transparent;border:0;border-bottom:1px solid;">            <br>            <br>                    ';
+
+    var block_type = '<div id="block_add_project_type" style="position: relative; font-size:3vw;text-align: center;top:4vw;">        <p style="font-size: 2vw;">What type of project is it?</p>        <div class="container">            <div class="row">                <div class="add_project_next offset-md-2 col-md-2" data-project-type="Medical" style="width:200px;height:200px;background-color:#73bec8;text-align:center;"><i style="color:#fff; font-size:12vw" class="fa fa-stethoscope" aria-hidden="true"></i>                    <br>                    <p style="font-size:2vw;">Medical</p>                </div>                <div class="add_project_next col-md-2" data-project-type="Literature" style="width:200px;height:200px;background-color:#ffcc99;text-align:center;"><i style="color:#fff; font-size:12vw" class="fa fa-pencil" aria-hidden="true"></i>                    <br>                    <p style="font-size:2vw;">Literature</p>                </div>            </div>        </div> </div>';
+    var block_desc = 'this is description block';
+    var block_tags = 'this is tags block<button type="button" id="add_project_done" class="btn btn-secondary">Done</button>';
+    var add_project_block_check = localStorage.getItem("add_project_block_now");
+    if (add_project_block_check === null) {
+        localStorage.setItem("add_project_block_now", 1);
+    } else {
+        var block_now = add_project_block_check;
+    }
+    var previous_button = '<i class="add_project_before fa fa-arrow-left" aria-hidden="true" class="add_project_next"></i>';
+    var next_button = '<i class="add_project_next fa fa-arrow-right" aria-hidden="true" class="add_project_next"></i> </p>    </div>';
+    var block_now = localStorage.getItem("add_project_block_now");
+    $('#add_project_full').html(eval(index_to_add_project_block[block_now]) + next_button);
+    $('#add_project_full').append(previous_button);
+};
+show_add_project_block();
+$(document).on('click', '.add_project_next', function() {
+    var b = parseInt(localStorage.getItem("add_project_block_now"));
+    if (b == 1) {
+        //get project title
+        localStorage.setItem("project_title", $('#project_title').val());
+    }
+    if (b == 2) {
+        //get project type
+        localStorage.setItem("project_type", $(this).attr('data-project-type'));
+    }
+    b++;
+    localStorage.setItem("add_project_block_now", b);
+    show_add_project_block();
+})
+$(document).on('click', '.add_project_before', function() {
+    var b = parseInt(localStorage.getItem("add_project_block_now"));
+    b--;
+    localStorage.setItem("add_project_block_now", b);
+    show_add_project_block();
+})
+$(document).on('click', '#add_project_done', function() {
+    var project_title = localStorage.getItem('project_title');
+    var project_type = localStorage.getItem('project_type');
+    var fd = new FormData();
+    fd.append('csrfmiddlewaretoken', token);
+    fd.append('project_title', project_title);
+    fd.append('project_type', project_type);
+    fd.append('project_desc', 'lalal');
+    $.ajax({
+        url: '../../project/add_final/',
+        type: 'POST',
+        data: fd,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            console.log("Done");
+            console.log(data);
+            location.reload();
+        }
+    });
+})
+</script>
+{% endblock body_content %}
