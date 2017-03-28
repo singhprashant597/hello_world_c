@@ -1,0 +1,23 @@
+{% extends "sitewide/sitewide_base.html" %} {% load staticfiles %} {% block body_content %} {% if user.is_authenticated %} {% include "home_and_login/user_home.html" %} 
+{% else %}
+	{% include "sitewide/pre_login_navbar.html" %}
+{% endif %}
+<div class="container-fluid" style="margin-top: 2vh;">
+    <div class="row">
+        <div class="col-md-2">
+            <p style="text-align: center;">Intro</p>
+            {{intro}}
+        </div>
+        <div class="col-md-8" style="text-align: center;">
+        	<img src="{{photo_link}}" style="width: 20%; margin: 0 auto;border-radius: 30vw; display: table-cell;">
+        	<p style="margin-top: 2vw;font-size: 2vw;">{{full_name}}</p>
+        	<button type="button" class="btn btn-primary">Follow | {{followers_total}}</button>
+        </div>
+        <div class="col-md-2">
+        	<p style="text-align: center;">About</p>
+        	<p><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp Worked at Kuvera</p>
+        	<p><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbspStudies Computer Science at GNIOT</p>
+        </div>
+    </div>
+</div>
+{% endblock body_content %}

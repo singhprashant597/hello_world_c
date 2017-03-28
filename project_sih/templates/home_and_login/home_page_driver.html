@@ -4,7 +4,7 @@
 {% block body_content %}
 	{% if user.is_authenticated %}
 		{% include "home_and_login/user_home.html" %}
-	{% else %}
+			{% else %}
 		{% include "home_and_login/home_page.html" %}
 	{% endif %}
 {% endblock body_content %}

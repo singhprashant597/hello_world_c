@@ -10,7 +10,7 @@ class user_details(models.Model):
     dob = models.DateField(null=True)
     #add for academic detail
     intro = models.CharField(max_length=200,null=True)
-    photo_link = models.URLField(default='/static/sitewide/anonymous-male.png')
+    photo_link = models.URLField(default='/static/images/anonymous-male.png')
     followers_total = models.IntegerField(default=0)
     following_total = models.IntegerField(default=0)
     projects_total = models.IntegerField(default=0)

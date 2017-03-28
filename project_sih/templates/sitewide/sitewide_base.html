@@ -1,24 +1,15 @@
 {% load staticfiles %}
 <!doctype html>
 <html lang="en">
-
-
 {% include "sitewide/header.html" %}
+
 <body class="home">
-
-
-    <main>
-        {% block body_content %} {% endblock body_content %}
-    </main>
-
-
+    {% block body_content %} {% endblock body_content %}
     <!-- <script src="{% static 'tether.min.js' %}"></script> -->
-
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
-
     <script src="{% static 'sidebar.js' %}"></script>
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
-    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->  
+    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 </body>
 
 </html>

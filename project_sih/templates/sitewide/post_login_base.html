@@ -1,135 +1,37 @@
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no" />
-    <title>User profile</title>
-    <link rel="stylesheet" href="../../static/style_home_page.css">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-    <!-- jQuery library -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
-    <!-- Latest compiled JavaScript -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <script src="{% static 'tether.min.js' %}"></script>
-    <script src="{% static 'jquery-3.1.1.min.js' %}"></script>
-    <script type="text/javascript" src="../../static/sidebar.js"></script>
-</head>
-
-<body class="">
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <div data-spy="affix">
-            <nav class="navbar navbar-inverse bg-inverse fixed-top sidebar scrollbar navbar-toggleable-sm" id="sidebar-wrapper">
-                <a class="navbar-brand" href="#">
-                    <span>Projects</span>
-                </a>
-                <div class="clearfix"></div>
-                <!-- menu profile quick info -->
-                <div class="profile clearfix" id="profile">
-                    <div class="profile-image">
-                        <img src="../../static/images/img.jpg" class="profile-image rounded-circle" alt="profile image" />
+<div class="nav_bar">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand ml-md-5" href="#">LOGO</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline ml-5">
+                <input class="form-control mr-sm-2" style="margin-left: 4vw;" type="text" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav ml-auto" style="margin-right: 6vw">
+                <li class="nav-item">
+                    <a class="nav-link" href="../../">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item my-auto">
+                    <button class="btn btn-outline-success my-2 my-sm-0" onclick="window.location='../../project/add/';" style="color:#927b7b;border-color: transparent;" type="submit"><i class="fa fa-plus" aria-hidden="true"></i>&nbspAdd Project</button>
+                </li>
+                <li class="nav-item dropdown">
+                    <img onclick="window.location='../../profile/{{profile_link}}';" src="{% static 'images/anonymous-male.png' %}" style="width: 3vw;
+    border-radius: 3vw;
+    display: inline;">
+                    <a class="nav-link dropdown-toggle" style="display: inline;" id="user_options_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{user.first_name}}
+        </a>
+                    <div class="dropdown-menu" aria-labelledby="user_options_dropdown">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="#">Preferences</a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="../../home/logout">Logout</a>
                     </div>
-                    <div class="profile-info"> <span>Welcome,</span>
-                        <h2>John Doe</h2>
-                    </div>
-                </div>
-                <!-- /menu profile quick info -->
-                <br />
-                <!-- sidebar menu -->
-                <div id="sidebar-menu" class="main-menu-side main-menu">
-                    <div class="menu-section">
-                        <h3>General</h3>
-                        <ul class="nav side-menu">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-home"></i> Home
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-edit"></i> Edit
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#demo" data-toggle="collapse" class="nav-link">
-                                    <i class="fa fa-desktop"></i> Events
-                                    <span id="chevron-down"></span>
-                                </a>
-                                <ul class="nav child-menu collapse" id="demo">
-                                    <li class="nav-item"> <a href="#" class="nav-link">Society Upliftment Event</a>
-                                    </li>
-                                    <li class="nav-item"> <a href="#" class="nav-link">Innovative Event</a>
-                                    </li>
-                                    <li class="nav-item"> <a href="#" class="nav-link">Brainstorming Event</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="home/logout" class="nav-link">
-                                    <i class="fa fa-sign-out"></i> Logout
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- menu footer buttons -->
-                    <div class="menu-footer">
-                        <a href="#">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                        </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                        </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                        </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                        </a>
-                    </div>
-                </div>
-            </nav>
+                </li>
+            </ul>
         </div>
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <nav class="navbar navbar-light bg-faded fixed-top profile-nav  navbar-toggleable-sm">
-                <button type="button" class="hamburger is-closed" data-toggle="offcanvas" name="button" id="menu_toggle">☰</button>
-                <ul class="nav navbar-nav ml-auto hidden-xs-down">
-                    <li class="navbar-tab nav-item">
-                        <a href="#" class="fa fa-bell nav-link"></a>
-                    </li>
-                    <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                            <img src="../../static/images/img.jpg" class="profile-img rounded-circle" alt="profile image" /> &nbsp;John doe
-                            <span class="fa fa-angle-down"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-header dropdown-item">User</li>
-                            <li class="dropdown-item"><a href="#">Home</a>
-                            </li>
-                            <li class="dropdown-item"><a href="#">Projects</a>
-                            </li>
-                            <li class="divider dropdown-item"></li>
-                            <li class="dropdown-header dropdown-item">Social</li>
-                            <li class="dropdown-item"><a href="#">Share</a>
-                            </li>
-                            <li class="divider dropdown-item"></li>
-                            <li class="dropdown-item"><a href="#">Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"></li>
-                </ul>
-            </nav>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-12"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-
-</html>
+    </nav>
+</div>

@@ -15,7 +15,7 @@ $(document).on('submit', '#form_signup', function() {
     console.log(values);
     console.log(fd)
     $.ajax({
-        url: 'home/add_new_user/',
+        url: '../../home/add_new_user/',
         type: 'POST',
         data: fd,
         processData: false,
@@ -23,7 +23,7 @@ $(document).on('submit', '#form_signup', function() {
         success: function(data) {
             console.log("Done");
             console.log(data);
-            location.reload();
+            window.location = '../../';
         }
     });
     return false;
@@ -43,14 +43,14 @@ $(document).on('submit', '#form_login', function() {
         }
     }
     $.ajax({
-        url: 'home/login_user/',
+        url: '../../home/login_user/',
         type: 'POST',
         data: fd,
         processData: false,
         contentType: false,
         success: function(data) {
             console.log("Done");
-            location.reload();
+            window.location = '../../';
         }
     });
     return false;

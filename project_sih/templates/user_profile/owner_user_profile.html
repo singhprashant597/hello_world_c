@@ -1,0 +1,42 @@
+{% extends "sitewide/sitewide_base.html" %} {% load staticfiles %} {% block body_content %} {% if user.is_authenticated %} {% include "home_and_login/user_home.html" %} {% else %} {% include "sitewide/pre_login_navbar.html" %} {% endif %}
+<div class="container-fluid" style="margin-top: 2vh;">
+    <div class="row">
+        <div class="col-md-2">
+            <p style="text-align: center;">Intro&nbsp&nbsp<i class="fa fa-pencil edit_user_info" data-toggle="modal" data-target="#edit_user_info_modal" aria-hidden="true"></i></p>
+            <p>{{intro}}</p>
+        </div>
+        <div class="col-md-8" style="text-align: center;">
+            <img src="{{photo_link}}" style="width: 15%; margin: 0 auto;border-radius: 30vw; display: table-cell;">
+            <p style="margin-top: 2vw;font-size: 2vw;">{{full_name}}</p>
+            <button type="button" class="btn btn-primary">Followers | {{followers_total}}</button>
+        </div>
+        <div class="col-md-2">
+            <p style="text-align: center;">About</p>
+            <p><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp Worked at Kuvera</p>
+            <p><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbspStudies Computer Science at GNIOT</p>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="edit_user_info_modal" tabindex="-1" role="dialog" aria-labelledby="edit_user_info_modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="l">{{user.first_name}},&nbspUpdate your details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Your short intro</p>
+                <input type="text" name="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+</script>
+{% endblock body_content %}

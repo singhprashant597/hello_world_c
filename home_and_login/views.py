@@ -8,8 +8,14 @@ import random
 
 
 def home_page(request):
-    return render(request, 'home_and_login/home_page_driver.html',
-                  {'form_signup': form_signup, 'form_login': form_login})
+    user_id_in_action = request.user.id
+    if user_id_in_action is not None:
+        fetched_data = user_details.objects.filter(user_id=user_id_in_action).values_list('profile_link')
+        print(fetched_data[0][0])
+        return render(request, 'home_and_login/home_page_driver.html',
+                  {'profile_link': fetched_data[0][0]})
+    else:
+        return render(request, 'home_and_login/home_page_driver.html')
 
 
 def login_user(request):
