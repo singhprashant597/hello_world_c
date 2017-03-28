@@ -4,7 +4,7 @@ $(document).ready(function() {
     });
 
 
-    $BODY = $('body'),
+        $BODY = $('body'),
         $MENU_TOGGLE = $('#menu_toggle'),
         $SIDEBAR_MENU = $('#sidebar-menu');
 
