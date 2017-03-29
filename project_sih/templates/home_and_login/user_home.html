@@ -1,11 +1,66 @@
-{% load staticfiles %}
-{% include "sitewide/post_login_base.html" %}
-<p>This page will contain projects in the feed in center. Left will have user preferences and filters. Right will be blank for now.</p>
-<!-- <div class="container-fluid">
+{% load staticfiles %} {% include "sitewide/post_login_base.html" %}
+<style type="text/css">
+.feed_button {
+    font-size: 2vw;
+    margin-right: 1vw;
+}
+.feed_user_picture{
+	width: 3vw;
+	display: inline;
+	border-radius: 12vw;
+}
+.feed_user_activity{
+	display: inline;
+}
+</style>
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
-            <p>About</p>
+        <div class="col">
+            <h3><p class="text-center my-4">{{user.first_name}}'s Website_Name</p></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-md-3 col-md-6" id="user_feed">
+            <p>Top Projects for you</p>
         </div>
     </div>
 </div>
- -->
+<script type="text/javascript">
+token = '{{ csrf_token }}';
+$(document).ready(function() {
+    $.ajax({
+        url: '../../profile/create_feed/',
+        type: 'POST',
+        data: {
+            'csrfmiddlewaretoken': token
+        },
+        success: function(data) {
+            console.log(data);
+            for (feed_element in data) {
+                console.log(data[feed_element]['liked']);
+                if (data[feed_element]['likes_total'] == '0') {
+                    data[feed_element]['likes_total'] = '';
+                }
+                if (data[feed_element]['comments_total'] == '0') {
+                    data[feed_element]['comments_total'] = '';
+                }
+                if (data[feed_element]['shares_total'] == '0') {
+                    data[feed_element]['shares_total'] = '';
+                }
+                if (data[feed_element]['liked'] == '1') {
+                    var bool_liked = 'liked';
+                } else if (data[feed_element]['liked'] == '0') {
+                    var bool_liked = 'unliked';
+                }
+                               var project_all =
+                    '<div class="feed_project">                <hr>                <div class="feed_project_owner_meta"> <img class="feed_user_picture" src = ' + data[feed_element]['photo_link'] + '>                    <p class="feed_user_activity" > ' + data[feed_element]['full_name'] + ' added this | Mar 18</p>                </div>                <h4 class="feed_heading">' + data[feed_element]['title'] + '</h4>                <div class="feed_content">                    <p class="feed_compressed_desc">' + data[feed_element]['description'] +'                    </p>                    <div class="feed_buttons">                        <i class="fa fa-thumbs-up feed_button" aria-hidden="true">' + data[feed_element]['likes_total'] + '</i>                        <i class="fa fa-comment feed_button" aria-hidden="true">' + data[feed_element]['comments_total'] + '</i>                        <i class="fa fa-share feed_button" aria-hidden="true">' + data[feed_element]['shares_total'] + '</i>                    </div>                </div>                           </div>';
+                console.log(data[feed_element]['full_name']);
+                console.log(project_all);
+                feed = document.getElementById('user_feed');
+                feed.insertAdjacentHTML('beforeend', project_all);
+
+            }
+        }
+    })
+});
+</script>
