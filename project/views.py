@@ -18,3 +18,12 @@ def add_project(request):
 	project_save = project.objects.create(
             user_id=user_id_in_action, title=project_title, project_type=project_type,description=project_desc,project_link=User.first_name)
 	return HttpResponse("Done")
+
+	def like(request,user_id);
+	new_like,  created = Like.objects.get_or_create(user=request.user, picture_id=picture_id)
+    if not created:
+    	# created = Like.objects.get_or_create(user=request.user, picture_id=picture_id)
+    if not created: the user already liked project
+else:
+	# not like
+	
