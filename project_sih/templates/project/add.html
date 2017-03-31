@@ -1,6 +1,5 @@
 {% extends "sitewide/sitewide_base.html" %} {% load staticfiles %} {% block extra_headers %}
-<link href="https://fonts.googleapis.com/css?family=Barrio|Open+Sans|Josefin+Sans" rel="stylesheet"> {% endblock extra_headers %} {% block body_content %}
-{% include "sitewide/post_login_base.html" %}
+<link href="https://fonts.googleapis.com/css?family=Barrio|Open+Sans|Josefin+Sans" rel="stylesheet"> {% endblock extra_headers %} {% block body_content %} {% include "sitewide/post_login_base.html" %}
 <style type="text/css">
 input:focus {
     outline: 0;
@@ -14,6 +13,49 @@ input:focus {
         <br><p>Medical</p>
     </div>
     <i class="fa fa-arrow-right" aria-hidden="true" id="add_project_next_2"></i></div> -->
+<div class="container" id="text_editor" style="display: none">
+    <div class="row">
+        <div class="offset-md-2 col-md-8" d="controls">
+            <button id="bold" type="button" class="btn toolbar_btn"> <i class="fa fa-bold"></i> </button>
+            <button id="italic" type="button" class="btn toolbar_btn"> <i class="fa fa-italic"></i> </button>
+            <button id="underline" type="button" class="btn toolbar_btn"> <i class="fa fa-underline"></i> </button>
+            <button id="strikethrough" type="button" class="btn toolbar_btn"> <i class="fa fa-strikethrough"></i> </button>
+            <div class="toolbar_separator"></div>
+            <button d="left_align" type="button" class="btn toolbar_btn"> <i class="fa a-align-left"></i> </button>
+            <button id="center_align" ype="button" class="btn toolbar_btn"> <i class="fa fa-align-center"></i> </button>
+            <button id="right_align" type="button" class="btn toolbar_btn"> <i class="fa fa-align-right"></i> </button>
+            <button id="orderedlist" type="button" class="btn toolbar_btn"> <i class="fa fa-list-ol"></i> </button>
+            <button id="unorderedlist" type="button" class="btn toolbar_btn"> <i class="fa fa-list-ul"></i> </button>
+            <button id="outdentText" type="button" class="btn toolbar_btn"> <i class="fa fa-outdent"></i> </button>
+            <button id="indentText" type="button" class="btn toolbar_btn"> <i class="fa fa-indent"></i> </button>
+            <div class="toolbar_separator"></div>
+            <select id="fonts" class="form-control">
+                <option selected> Font </option>
+                <option value="Normal">Normal</option>
+                <option value="Arial">Arial</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Monotype Corsiva">Monotype</option>
+                <option value="Tahoma New">Tahoma</option>
+                <option value="Times">Times</option>
+                <option value="Trebuchet New">Trebuchet</option>
+                <option value="Ubuntu">Ubuntu</option>
+            </select>
+            <select id="fontSize" class="form-control">
+                <option selected>Font Size</option>
+                <option value="1">12</option>
+                <option value="2">18</option>
+                <option value="3">24</option>
+                <option value="4">30</option>
+                <option value="5">36</option>
+                <option value="6">48</option>
+                <option value="7">60</option>
+            </select>
+        <iframe id="textEditor"></iframe>
+        </div>
+        
+    </div>
+</div>
 <script type="text/javascript">
 var token = '{{csrf_token}}';
 var index_to_add_project_block = {
@@ -26,10 +68,10 @@ var index_to_add_project_block = {
 function show_add_project_block() {
     //blocks defined
     var block_title = '<div id="block_add_project_title" style="position: relative; font-size:3vw;text-align: center;top:21%;">        <p>Hi! {{user.first_name}}            <p style="font-size: 2vw;">Give a title to your project.</p>            <input type="text" id="project_title" placeholder="title" style="font-size: 2vw; text-align: center; background-color: transparent;border:0;border-bottom:1px solid;">            <br>            <br>                    ';
-
     var block_type = '<div id="block_add_project_type" style="position: relative; font-size:3vw;text-align: center;top:4vw;">        <p style="font-size: 2vw;">What type of project is it?</p>        <div class="container">            <div class="row">                <div class="add_project_next offset-md-2 col-md-2" data-project-type="Medical" style="width:200px;height:200px;background-color:#73bec8;text-align:center;"><i style="color:#fff; font-size:12vw" class="fa fa-stethoscope" aria-hidden="true"></i>                    <br>                    <p style="font-size:2vw;">Medical</p>                </div>                <div class="add_project_next col-md-2" data-project-type="Literature" style="width:200px;height:200px;background-color:#ffcc99;text-align:center;"><i style="color:#fff; font-size:12vw" class="fa fa-pencil" aria-hidden="true"></i>                    <br>                    <p style="font-size:2vw;">Literature</p>                </div>            </div>        </div> </div>';
-    var block_desc = 'this is description block';
+    var block_desc='aa';
     var block_tags = 'this is tags block<button type="button" id="add_project_done" class="btn btn-secondary">Done</button>';
+
     var add_project_block_check = localStorage.getItem("add_project_block_now");
     if (add_project_block_check === null) {
         localStorage.setItem("add_project_block_now", 1);
@@ -39,7 +81,13 @@ function show_add_project_block() {
     var previous_button = '<i class="add_project_before fa fa-arrow-left" aria-hidden="true" class="add_project_next"></i>';
     var next_button = '<i class="add_project_next fa fa-arrow-right" aria-hidden="true" class="add_project_next"></i> </p>    </div>';
     var block_now = localStorage.getItem("add_project_block_now");
-    $('#add_project_full').html(eval(index_to_add_project_block[block_now]) + next_button);
+    if (block_now==3){
+        $("#add_project_full").html($("#text_editor").html() + next_button);
+    }
+    else{
+        $('#add_project_full').html(eval(index_to_add_project_block[block_now]) + next_button);   
+    }
+    
     $('#add_project_full').append(previous_button);
 };
 show_add_project_block();
@@ -49,9 +97,13 @@ $(document).on('click', '.add_project_next', function() {
         //get project title
         localStorage.setItem("project_title", $('#project_title').val());
     }
-    if (b == 2) {
+    else if (b == 2) {
         //get project type
         localStorage.setItem("project_type", $(this).attr('data-project-type'));
+    }
+    else if (b == 3){
+        project_desc  = $("#textEditor").contents().find("body").html();
+        localStorage.setItem('project_desc', project_desc);
     }
     b++;
     localStorage.setItem("add_project_block_now", b);
@@ -70,7 +122,7 @@ $(document).on('click', '#add_project_done', function() {
     fd.append('csrfmiddlewaretoken', token);
     fd.append('project_title', project_title);
     fd.append('project_type', project_type);
-    fd.append('project_desc', 'lalal');
+    fd.append('project_desc', project_desc);
     $.ajax({
         url: '../../project/add_final/',
         type: 'POST',
@@ -85,4 +137,5 @@ $(document).on('click', '#add_project_done', function() {
     });
 })
 </script>
+<script src="{% static 'editor.js' %}"></script>
 {% endblock body_content %}

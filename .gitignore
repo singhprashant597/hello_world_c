@@ -1,5 +1,9 @@
 venv
 .env
+.pyc
+__pycache__/
+*.py[cod]
+project/__pycache__/
 project_sih/__pycache__/
 home_and_login/__pycache__/
-
+user_profile/__pycache__/
