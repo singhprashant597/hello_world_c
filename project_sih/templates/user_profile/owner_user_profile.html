@@ -1,4 +1,4 @@
-{% extends "sitewide/sitewide_base.html" %} {% load staticfiles %} {% block body_content %} {% if user.is_authenticated %} {% include "home_and_login/user_home.html" %} {% else %} {% include "sitewide/pre_login_navbar.html" %} {% endif %}
+{% extends "sitewide/sitewide_base.html" %} {% load staticfiles %} {% block body_content %} {% if user.is_authenticated %} {% include "sitewide/post_login_base.html" %} {% else %} {% include "sitewide/pre_login_navbar.html" %} {% endif %}
 <style type="text/css">
 .feed_button {
     font-size: 2vw;
@@ -66,7 +66,7 @@
         </li>
     </ul>
 
-<div class="container-fluid" style="margin-top: 2vh;">
+<!-- <div class="container-fluid" style="margin-top: 2vh;">
     <div class="row">
         <div class="col-md-2">
             <p style="text-align: center;">Intro&nbsp&nbsp<i class="fa fa-pencil edit_user_info" data-toggle="modal" data-target="#edit_user_info_modal" aria-hidden="true"></i></p>
@@ -83,7 +83,7 @@
             <p><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbspStudies Computer Science at GNIOT</p>
         </div>
     </div>
-</div>
+</div> -->
 <div class="container-fluid">
     <div class="row">
         <div class="offset-md-3 col-md-6" id="user_feed">
