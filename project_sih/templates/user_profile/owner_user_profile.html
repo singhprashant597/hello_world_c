@@ -4,12 +4,14 @@
     font-size: 2vw;
     margin-right: 1vw;
 }
-.feed_user_picture{
+
+.feed_user_picture {
     width: 3vw;
     display: inline;
     border-radius: 12vw;
 }
-.feed_user_activity{
+
+.feed_user_activity {
     display: inline;
 }
 </style>
@@ -20,7 +22,7 @@
             <p>{{intro}}</p>
         </div>
         <div class="col-md-8" style="text-align: center;">
-            <img src="{{photo_link}}" style="width: 15%; margin: 0 auto;border-radius: 30vw; display: table-cell;">
+            <img id="image_profile" data-toggle="modal" data-target="#image_profile_modal" src="{{photo_link}}" style="width: 15%; margin: 0 auto;border-radius: 30vw; display: table-cell;">
             <p style="margin-top: 2vw;font-size: 2vw;">{{full_name}}</p>
             <button type="button" class="btn btn-primary">Followers | {{followers_total}}</button>
         </div>
@@ -38,6 +40,55 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="image_profile_modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="l">Message to {{full_name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data" id="formUpload">
+                    {% csrf_token %} {{ form }}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" data-footer_element_beta="{{element_beta}}" class="btn btn-primary" id="send_message_button">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalCrop">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Crop the photo</h4>
+        </div>
+        <div class="modal-body">
+          <img src="" id="image" style="max-width: 100%;">
+        </div>
+        <div class="modal-footer">
+          <div class="btn-group pull-left" role="group">
+            <button type="button" class="btn btn-default js-zoom-in">
+              <span class="glyphicon glyphicon-zoom-in"></span>
+            </button>
+            <button type="button" class="btn btn-default js-zoom-out">
+              <span class="glyphicon glyphicon-zoom-out"></span>
+            </button>
+          </div>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
+          <button type="button" class="btn btn-primary js-crop-and-upload">Crop and upload</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <div class="modal fade" id="edit_user_info_modal" tabindex="-1" role="dialog" aria-labelledby="edit_user_info_modal" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -60,11 +111,65 @@
 </div>
 <script type="text/javascript">
 token = '{{ csrf_token }}';
+$(function () {
+
+      /* SCRIPT TO OPEN THE MODAL WITH THE PREVIEW */
+      $("#id_file").change(function () {
+        if (this.files && this.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $("#image").attr("src", e.target.result);
+            $("#modalCrop").modal("show");
+          }
+          reader.readAsDataURL(this.files[0]);
+        }
+      });
+
+      /* SCRIPTS TO HANDLE THE CROPPER BOX */
+      var $image = $("#image");
+      var cropBoxData;
+      var canvasData;
+      $("#modalCrop").on("shown.bs.modal", function () {
+        $image.cropper({
+          viewMode: 1,
+          aspectRatio: 1/1,
+          minCropBoxWidth: 200,
+          minCropBoxHeight: 200,
+          ready: function () {
+            $image.cropper("setCanvasData", canvasData);
+            $image.cropper("setCropBoxData", cropBoxData);
+          }
+        });
+      }).on("hidden.bs.modal", function () {
+        cropBoxData = $image.cropper("getCropBoxData");
+        canvasData = $image.cropper("getCanvasData");
+        $image.cropper("destroy");
+      });
+
+      $(".js-zoom-in").click(function () {
+        $image.cropper("zoom", 0.1);
+      });
+
+      $(".js-zoom-out").click(function () {
+        $image.cropper("zoom", -0.1);
+      });
+
+      /* SCRIPT TO COLLECT THE DATA AND POST TO THE SERVER */
+      $(".js-crop-and-upload").click(function () {
+        var cropData = $image.cropper("getData");
+        $("#id_x").val(cropData["x"]);
+        $("#id_y").val(cropData["y"]);
+        $("#id_height").val(cropData["height"]);
+        $("#id_width").val(cropData["width"]);
+        $("#formUpload").submit();
+      });
+
+    });
 $(document).ready(function() {
-    page_link =  window.location.pathname;
-    slash_index = window.location.pathname.indexOf('/',2);
-    profile_name = page_link.slice(slash_index+1, -1);
-    final_url = '../../profile/profile_feed/' + profile_name +'/';
+    page_link = window.location.pathname;
+    slash_index = window.location.pathname.indexOf('/', 2);
+    profile_name = page_link.slice(slash_index + 1, -1);
+    final_url = '../../profile/profile_feed/' + profile_name + '/';
     $.ajax({
         url: final_url,
         type: 'POST',
@@ -90,7 +195,7 @@ $(document).ready(function() {
                     var bool_liked = 'unliked';
                 }
                 var project_all =
-                    '<div class="feed_project">                <hr>                <div class="feed_project_owner_meta"> <img class="feed_user_picture" src = ' + data[feed_element]['photo_link'] + '>                    <p class="feed_user_activity" > ' + data[feed_element]['full_name'] + ' added this | Mar 18</p>                </div>                <h4 class="feed_heading">' + data[feed_element]['title'] + '</h4>                <div class="feed_content">                    <p class="feed_compressed_desc">' + data[feed_element]['description'] + '                    </p>                    <div class="feed_buttons">                        <i class="fa fa-thumbs-up feed_button" aria-hidden="true">' + data[feed_element]['likes_total'] + '</i>                        <i class="fa fa-comment feed_button" aria-hidden="true">' + data[feed_element]['comments_total'] + '</i>                        <i class="fa fa-share feed_button" aria-hidden="true">' + data[feed_element]['shares_total'] + '</i>                    </div>                </div>                           </div>';
+                    '<div class="feed_project">                <hr>                <div class="feed_project_owner_meta"> <img class="feed_user_picture" src = ' + data[feed_element]['photo_link'] + '>                    <p class="feed_user_activity" > ' + data[feed_element]['full_name'] + ' added this | Mar 18</p>                </div>                <h4 class="feed_heading"><a href="../../project/' + data[feed_element]['project_link'] + '">' + data[feed_element]['title'] + '</a></h4>                <div class="feed_content">                    <p class="feed_compressed_desc">' + data[feed_element]['description'] + '                    </p>                    <div class="feed_buttons">                        <i class="fa fa-thumbs-up feed_button" aria-hidden="true">' + data[feed_element]['likes_total'] + '</i>                        <i class="fa fa-comment feed_button" aria-hidden="true">' + data[feed_element]['comments_total'] + '</i>                        <i class="fa fa-share feed_button" aria-hidden="true">' + data[feed_element]['shares_total'] + '</i>                    </div>                </div>                           </div>';
                 console.log(data[feed_element]['full_name']);
                 console.log(project_all);
                 feed = document.getElementById('user_feed');
@@ -101,4 +206,5 @@ $(document).ready(function() {
     })
 });
 </script>
+<script src="{% static 'assets/javascripts/cropper.min.js' %}"></script>
 {% endblock body_content %}

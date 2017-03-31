@@ -12,13 +12,13 @@
             </form>
             <ul class="navbar-nav ml-auto" style="margin-right: 6vw">
                 <li class="nav-item">
-                    <a class="nav-link" href="../../">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="../../../">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item my-auto">
-                    <button class="btn btn-outline-success my-2 my-sm-0" onclick="window.location='../../project/add/';" style="color:#927b7b;border-color: transparent;" type="submit"><i class="fa fa-plus" aria-hidden="true"></i>&nbspAdd Project</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" onclick="window.location='../../../project/add/';" style="color:#927b7b;border-color: transparent;" type="submit"><i class="fa fa-plus" aria-hidden="true"></i>&nbspAdd Project</button>
                 </li>
                 <li class="nav-item dropdown">
-                    <img onclick="window.location='../../profile/{{profile_link}}';" src="{% static 'images/anonymous-male.png' %}" style="width: 3vw;
+                    <img onclick="window.location='../../../profile/{{profile_link}}';" src="{% static 'images/anonymous-male.png' %}" style="width: 3vw;
     border-radius: 3vw;
     display: inline;">
                     <a class="nav-link dropdown-toggle" style="display: inline;" id="user_options_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,8 +27,8 @@
                     <div class="dropdown-menu" aria-labelledby="user_options_dropdown">
                         <a class="dropdown-item" href="#">Profile</a>
                         <a class="dropdown-item" href="#">Preferences</a>
-                        <a class="dropdown-item" href="/home/setting">Setting</a>
-                        <a class="dropdown-item" href="/home/logout">Logout</a>
+                        <a class="dropdown-item" href="../../../home/setting">Setting</a>
+                        <a class="dropdown-item" href="../../../home/logout">Logout</a>
                     </div>
                 </li>
             </ul>

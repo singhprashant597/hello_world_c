@@ -15,7 +15,7 @@ class project(models.Model):
         choices=project_type_choices,
         default = 'NO'
     )
-    project_link = models.URLField(default='error.html')
+    project_link = models.CharField(max_length=85, default='error.html')
     likes_total = models.IntegerField(default=0)
     comments_total = models.IntegerField(default=0)
     shares_total = models.IntegerField(default=0)
