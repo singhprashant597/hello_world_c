@@ -88,7 +88,7 @@ body{
     letter-spacing: 1.5px;
 }
 
-.form-control {
+.form-control .form_size {
     height: 40px;
     border-radius: 30px;
     padding: 22px 28px;
